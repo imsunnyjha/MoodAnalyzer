@@ -26,11 +26,39 @@ namespace MoodAnalyzerTest
         {
             //Arrange
             string expected = "HAPPY";
-            MoodAnalyse moodAnalyzer = new MoodAnalyse(message);
+            MoodAnalyse moodAnalyzer = new MoodAnalyse("I am in Happy Mood");
             //Act
             string mood = moodAnalyzer.AnalyseMood();
             //Assert
             Assert.AreEqual(expected, mood);
+        }
+        [TestMethod]
+        public void GivenEmptyMoodShouldThrowMoodAnalyserExceptionShowingEmptyMood()
+        {
+            try
+            {
+                string message = "";
+                MoodAnalyse moodAnalyse = new MoodAnalyse(message);
+                string mood = moodAnalyse.AnalyseMood();
+            }
+            catch(MoodAnalyseException e)
+            {
+                Assert.AreEqual("Mood should not be empty!", e.Message);
+            }
+        }
+        [TestMethod]
+        public void GivenNullMoodShouldThrowMoodAnalyserExceptionShowingNullMood()
+        {
+            try
+            {
+                string message = null;
+                MoodAnalyse moodAnalyse = new MoodAnalyse(message);
+                string mood = moodAnalyse.AnalyseMood();
+            }
+            catch (MoodAnalyseException e)
+            {
+                Assert.AreEqual("Mood should not be null!", e.Message);
+            }
         }
     }
 }
