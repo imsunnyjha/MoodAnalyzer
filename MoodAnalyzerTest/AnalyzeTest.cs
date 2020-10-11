@@ -10,8 +10,8 @@ namespace MoodAnalyzerTest
         public void ForSadMoodShouldReturnSad()
         {
             //Arrange
-            string expected = "HAPPY";
-            string message = "I am in Happy Mood";
+            string expected = "SAD";
+            string message = "I am in Sad Mood";
             MoodAnalyse moodAnalyzer = new MoodAnalyse(message);
 
             //Act
