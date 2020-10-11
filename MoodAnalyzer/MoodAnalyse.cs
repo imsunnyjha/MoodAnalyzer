@@ -14,11 +14,18 @@ namespace MoodAnalyzer
         }
         public string AnalyseMood()
         {
+            try
+            {
                 if (this.message.Contains("Sad"))
                 {
                     return "SAD";
                 }
                 return "HAPPY";
+            }
+            catch
+            {
+                return "HAPPY";
+            }
         }
         
     }
