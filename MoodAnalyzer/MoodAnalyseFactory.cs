@@ -31,5 +31,26 @@ namespace MoodAnalyzer
                 throw new MoodAnalyseException(MoodAnalyseException.ExceptionType.NO_SUCH_METHOD, "Constructors not found");
             }
         }
+        public static object CreateMoodAnalysisUsingParameterizedConstructor(string className,string constructorName,string message)
+        {
+            Type type = typeof(MoodAnalyse);
+            if(type.Name.Equals(className) || type.FullName.Equals(className))
+            {
+                if (type.Name.Equals(constructorName))
+                {
+                    ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
+                    object instance = ctor.Invoke(new object[] { message });
+                    return instance;
+                }
+                else
+                {
+                    throw new MoodAnalyseException(MoodAnalyseException.ExceptionType.NO_SUCH_METHOD, "Constructors not found");
+                }
+            }
+            else
+            {
+                throw new MoodAnalyseException(MoodAnalyseException.ExceptionType.NO_SUCH_CLASS, "Class not found");
+            }
+        }
     }
 }
