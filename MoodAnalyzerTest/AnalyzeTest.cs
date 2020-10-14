@@ -4,7 +4,7 @@ using MoodAnalyzer;
 namespace MoodAnalyzerTest
 {
     [TestClass]
-    public class AnalyzeTes
+    public class AnalyzeTest
     {
         [TestMethod]
         public void ForSadMoodShouldReturnSad()
@@ -41,7 +41,7 @@ namespace MoodAnalyzerTest
                 MoodAnalyse moodAnalyse = new MoodAnalyse(message);
                 string mood = moodAnalyse.AnalyseMood();
             }
-            catch(MoodAnalyseException e)
+            catch (MoodAnalyseException e)
             {
                 Assert.AreEqual("Mood should not be empty!", e.Message);
             }
@@ -59,6 +59,13 @@ namespace MoodAnalyzerTest
             {
                 Assert.AreEqual("Mood should not be null!", e.Message);
             }
+        }
+        [TestMethod]
+        public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObject()
+        {
+            object expected = new MoodAnalyse();
+            object obj = MoodAnalyseFactory.CreateMoodAnalyse("MoodAnalyzer.MoodAnalyse", "MoodAnalyse");
+            expected.Equals(obj);
         }
     }
 }
