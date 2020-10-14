@@ -4,7 +4,6 @@ using System.Text;
 
 namespace MoodAnalyzer
 {
-    
     public class MoodAnalyse
     {
        private string message;
@@ -16,7 +15,6 @@ namespace MoodAnalyzer
         {
 
         }
-        
         public string AnalyseMood()
         {
             try
